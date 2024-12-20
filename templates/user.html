@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiHAN</title>
+    <link rel="icon" href="https://i0.wp.com/tihan.iith.ac.in/wp-content/uploads/2021/12/cropped-cropped-cropped-logo-vertical-05-1-e1640089226137.png?fit=150144&ssl=1"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #ff6600;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        iframe {
+            display: block;
+            margin: 1rem auto;
+            border-radius: 8px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #ff6600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Dashboard</h1>
+    </header>
+    <main>
+        <p>Welcome, User!</p>
+        {% if video_src %}
+            <p>Currently streaming video ID: {{ stream_id }}</p>
+            <iframe width="560" height="315" 
+                    src="{{ video_src }}" 
+                    frameborder="4" allowfullscreen></iframe>
+        {% else %}
+            <p>No active stream available.</p>
+        {% endif %}
+        <br>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </main>
+</body>
+</html>

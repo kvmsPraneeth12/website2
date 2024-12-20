@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TiHAN</title>
+    <link rel="icon" href="https://i0.wp.com/tihan.iith.ac.in/wp-content/uploads/2021/12/cropped-cropped-cropped-logo-vertical-05-1-e1640089226137.png?fit=150144&ssl=1"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #ff6600;
+            text-align: center;
+        }
+        p {
+            color: red;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        label {
+            font-size: 1rem;
+        }
+        input {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #ff6600;
+            color: white;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff6600;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            margin-top: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Panel</h2>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <label for="videoLink">YouTube Video Link:</label>
+            <input type="text" id="videoLink" name="videoLink" placeholder="Enter YouTube link">
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button type="submit" name="preview">Preview</button>
+                <button type="submit" name="start_stream">Start Stream</button>
+                <button type="submit" name="end_stream">End Stream</button>
+            </div>
+        </form>
+        {% if video_src %}
+            <iframe src="{{ video_src }}" frameborder="0" allowfullscreen></iframe>
+        {% endif %}
+    </div>
+</body>
+</html>
